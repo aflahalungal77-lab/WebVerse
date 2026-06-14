@@ -1563,44 +1563,35 @@
       }, 4200);
     }
 
-function setupForm() {
-  const numbers = [
-    "919961552951",
-    "917012334610",
-    "917025191150"
-  ];
+function sendToWhatsApp() {
 
-  document.getElementById("contactForm").addEventListener("submit", (event) => {
-    event.preventDefault();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const message = document.getElementById("message").value;
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const service = document.querySelector("input[name='service']:checked").value;
-    const message = document.getElementById("message").value.trim();
+  const service =
+    document.querySelector("input[name='service']:checked")?.value || "";
 
-    const text = encodeURIComponent(
+  const text = encodeURIComponent(
 `🚀 New WebVerse Enquiry
 
 👤 Name: ${name}
 📧 Email: ${email}
 📱 Phone: ${phone}
 🛠 Service: ${service}
-💬 Message: ${message}`
-    );
 
-    numbers.forEach((number, idx) => {
-      setTimeout(() => {
-        window.open(
-          `https://wa.me/${number}?text=${text}`,
-          "_blank"
-        );
-      }, idx * 800);
-    });
+💬 Message:
+${message}`
+  );
 
-    document.getElementById("formStatus").textContent =
-      "Opening WhatsApp chats...";
-  });
+  const groupLink =
+    "https://chat.whatsapp.com/GufzfDYBUEV9NUdbQTq2q1?s=sh&p=a&mlu=0";
+
+  window.open(
+    `${groupLink}?text=${text}`,
+    "_blank"
+  );
 }
 
     function setupThreeScene() {

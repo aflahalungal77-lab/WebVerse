@@ -1579,7 +1579,7 @@ Phone: ${phone}
 Service: ${service}
 Message: ${message}`);
         numbers.forEach((number, idx) => {
-          setTimeout(() => window.open(`https://wa.me/${number}?text=${text}`, "_blank", "noopener"), idx * 450);
+          setTimeout(() => window.open(`https://wa.me/${numbers}?text=${text}`, "_blank", "noopener"), idx * 450);
         });
         document.getElementById("formStatus").textContent = "WhatsApp enquiry opened for 3 WebVerse numbers.";
       });

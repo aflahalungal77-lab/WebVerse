@@ -1563,27 +1563,45 @@
       }, 4200);
     }
 
-    function setupForm() {
-      const numbers = ["919961552951", "917012334610", "917025191150"];
-      document.getElementById("contactForm").addEventListener("submit", (event) => {
-        event.preventDefault();
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const phone = document.getElementById("phone").value.trim();
-        const service = document.querySelector("input[name='service']:checked").value;
-        const message = document.getElementById("message").value.trim();
-        const text = encodeURIComponent(`New WebVerse enquiry
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Service: ${service}
-Message: ${message}`);
-        numbers.forEach((number, idx) => {
-          setTimeout(() => window.open(`https://wa.me/${numbers}?text=${text}`, "_blank", "noopener"), idx * 450);
-        });
-        document.getElementById("formStatus").textContent = "WhatsApp enquiry opened for 3 WebVerse numbers.";
-      });
-    }
+function setupForm() {
+  const numbers = [
+    "919961552951",
+    "917012334610",
+    "917025191150"
+  ];
+
+  document.getElementById("contactForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const service = document.querySelector("input[name='service']:checked").value;
+    const message = document.getElementById("message").value.trim();
+
+    const text = encodeURIComponent(
+`🚀 New WebVerse Enquiry
+
+👤 Name: ${name}
+📧 Email: ${email}
+📱 Phone: ${phone}
+🛠 Service: ${service}
+💬 Message: ${message}`
+    );
+
+    numbers.forEach((number, idx) => {
+      setTimeout(() => {
+        window.open(
+          `https://wa.me/${number}?text=${text}`,
+          "_blank"
+        );
+      }, idx * 800);
+    });
+
+    document.getElementById("formStatus").textContent =
+      "Opening WhatsApp chats...";
+  });
+}
 
     function setupThreeScene() {
       const canvas = document.getElementById("spaceCanvas");
